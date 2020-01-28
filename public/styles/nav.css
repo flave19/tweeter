@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+
+nav{
+  position: fixed;
+  top:0;
+  left:0;
+  /* display: block; */
+  width:100vw;
+  height: 120px;
+  background-color: #4056a1;
+  z-index: 7;
+  color: #FFFFFF;
+  padding:1.5em;
+  font-family: 'Bungee', cursive;
+}
