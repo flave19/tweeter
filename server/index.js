@@ -6,6 +6,7 @@ const PORT          = 8080;
 const express       = require("express");
 const bodyParser    = require("body-parser");
 const app           = express();
+const browserSync   = require('browser-sync');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -29,12 +30,22 @@ const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 // Mount the tweets routes at the "/tweets" path prefix:
 app.use("/tweets", tweetsRoutes);
 
-app.post("/tweets", (req,res) =>{
-  if(tweet){
-    res.redirect("/tweets")
-  }
-})
+// app.post("/tweets", (req,res) =>{
+//   if(tweet){
+//     res.redirect("/tweets")
+//   }
+// })
 
 app.listen(PORT, () => {
+  browserSync({
+    open: false,
+    proxy: 'http://localhost:' + PORT,
+    files: ["public/**/*.*"],
+    injectChanges: true,
+    watchOptions: {
+      usePolling: true
+    },
+    notify: true
+  });
   console.log("Example app listening on port " + PORT);
 });

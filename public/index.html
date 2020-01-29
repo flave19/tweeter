@@ -11,11 +11,14 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
   </head>
 
   <body>
@@ -32,17 +35,50 @@
               <h2>Flavian</h2>
           </div>
       </header>
+
+      
     <!-- Page-specific (main) content here -->
     <main class="container">
       <!-- <p>Hodor. Hodor hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor. Hodor. Hodor hodor; hodor hodor - hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor; hodor hodor; hodor hodor hodor! Hodor hodor HODOR! Hodor hodor... Hodor hodor hodor...</p> -->
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST">
+          <input type="submit" value="Tweet" >
           <textarea name="text" placeholder="What are you humming about?"></textarea>
-          <input type="submit" value="Tweet">
+          
           <span class="counter">140</span>
         </form>
       </section>
+
+
+      <section class="tweetSection">
+
+
+
+      </section>
+      <!-- <article>
+      
+          <div class='bord'>
+            <div class='NINJA'>
+              <div class="Namer">
+                  <img src="https://i.imgur.com/73hZDYK.png">
+                  <h4>Elmer Lazzeri</h4>
+              </div>   
+              
+              <div> 
+                  <h4 class="handle">@Lazzeri</h4>    
+              </div>
+            </div>
+            
+          </div>
+          <p class="actualtweet">If I have seen farther it is by standing on the shoulders of giants</p>
+        <footer>
+          <p>10 days ago</p>
+          <a href="">like</a>
+        </footer>
+        </div>
+
+      </article> -->
     </main>
   </body>
 </html>

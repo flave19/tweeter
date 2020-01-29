@@ -18,16 +18,73 @@ body {
   
   font-family: 'Source Sans Pro', sans-serif;
   color: #545149;
-  background-color: #f4f1ec;
+  background-color:none;
   font-size: 24px;
 }
 
 .container{
-  
-  background-color: #f4f1ec;
+  position: relative;
+  background-color: none;
   width:90%;
   text-align: center;
   margin: auto;
+}
+
+article:hover{
+  box-shadow: 5px 5px darkgray;
+}
+
+article{
+
+  border: 3px solid black;
+}
+
+form{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.Avatar{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+
+  align-items: center;
+}
+
+.Avatar img{
+  margin:auto 0;
+}
+
+
+
+.headerline{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.content{
+  margin-bottom: 20px;
+  border-bottom: 3px solid black;
+  font-size: 30px;
+  width: 90%;
+  margin:auto;
+  margin-bottom: 20px;
+}
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 1em;
+  padding-left: 1em;
+  font-size: 15px;
 }
 
 /*
