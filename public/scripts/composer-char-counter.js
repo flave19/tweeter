@@ -9,9 +9,11 @@ $(document).ready(function() {
     
     if (remaining < 0) {
       $("#counter").css('color', 'red');
+      $('.tooLong').css('display', 'block')
     }
     else{
       $('#counter').css('color', 'blue')
+      $('.tooLong').css('display', 'none')
     }
     
   })

@@ -45,8 +45,7 @@ $(document).ready(function() {
   $(".sendTweet").submit(function(event) {
     event.preventDefault();
     const $tweetInput = $(this).serialize().slice(5)
-// make css class called show : "display block"
-// make css for letter red Display none
+
     if(!$tweetInput){
       $('.errorBox').css('display', 'block')
     }
