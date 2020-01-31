@@ -15,7 +15,14 @@ const createTweetElement = function(tweet) {
       ${tweet.user.handle}
     </h2>
     <p class="content"> ${safetext}</p>
-    <footer>${moment(tweet.created_at).fromNow()}</footer>
+    <footer>
+    ${moment(tweet.created_at).fromNow()}
+    <div class='symbol'>
+    <a href="">👍</a>
+    <a href="">🔁</a>
+    <a href="">🚩</a>
+    </div>
+    </footer>
   </article>
 `;
   return markup;
@@ -36,7 +43,12 @@ const renderTweets = function(tweets) {
 $(document).ready(function() {
   $(".compose").click(function() {
     $(".new-tweet").slideToggle("slow",)
+    $('.textarea').focus();
   });
+
+  $(".tweetblock").hover(function(){
+    $(".symbol").css('display','show')
+  })
 
   $(".textarea").click(function(event) {
       $(".errorBox").css('display', 'none')
@@ -45,33 +57,31 @@ $(document).ready(function() {
   $(".sendTweet").submit(function(event) {
     event.preventDefault();
     const $tweetInput = $(this).serialize().slice(5)
-
+    
     if(!$tweetInput){
       $('.errorBox').css('display', 'block')
     }
     else if($tweetInput.length > 140){
-      // $(".counter").css('color', 'red')
-      alert("toobig")
+      return
     }
     else{
       $('.errorBox').css('display', 'none')
-    $.ajax({
-      url: `/tweets`,
-      type: "POST",
-      data: $(this).serialize(),
-      dataType: JSON,
-      success: loadtweets(),
-    })}
-    $(".textarea").val("");
-    $('#counter').text(140);
-
+      $.ajax({
+        url: `/tweets`,
+        type: "POST",
+        data: $(this).serialize(),
+        success: () => {
+          console.log('working')
+          loadtweets();
+          $(".textarea").val("");
+          $('#counter').text(140);
+        }
+      }
+    )
+  }
   });
-
-
 });
-// $(document).ready(function() {
-  
-// }
+
 const loadtweets = function (){
   $.ajax("/tweets", {
     method: 'GET'

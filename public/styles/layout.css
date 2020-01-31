@@ -24,14 +24,6 @@ body {
   font-size: 24px;
 }
 
-.container{
-  position: relative;
-  background-color: none;
-  width:90%;
-  text-align: center;
-  margin: auto;
-}
-
 article:hover{
   box-shadow: 5px 5px #F4B400;
 }
@@ -50,6 +42,14 @@ form{
 
 form button{
   font-family: Bungee;
+}
+
+.container{
+  position: relative;
+  background-color: none;
+  width:90%;
+  text-align: center;
+  margin: auto;
 }
 
 .errorBox{
@@ -75,6 +75,14 @@ form button{
 
 .Avatar img{
   margin:auto 0;
+}
+
+.symbol{
+  display: none;
+}
+
+.tweetblock:hover .symbol{
+  display: block;
 }
 
 .headerline{
@@ -111,11 +119,6 @@ footer{
   font-size: 15px;
 }
 
-textarea{
-  display: flex;
-  /* flex-direction: column; */
-}
-
 .tweetblock{
   margin: 10px 1px;
 }
@@ -139,23 +142,8 @@ textarea{
   .desktop {
     display:flex;
   }
-
-
-
   .container{
     width:50%;
     margin-top: 120px;
   }
-
-
-
 }
-
-/* @media(min-width:1000px){
-  .column{
-  
-  }
-} */
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
