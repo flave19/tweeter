@@ -33,15 +33,4 @@ app.use("/tweets", tweetsRoutes);
 
 
 app.listen(PORT, () => {
-  // browserSync({
-  //   open: false,
-  //   proxy: 'http://localhost:' + PORT,
-  //   files: ["public/**/*.*"],
-  //   injectChanges: true,
-  //   watchOptions: {
-  //     usePolling: true
-  //   },
-  //   notify: true
-  // });
-  // console.log("Example app listening on port " + PORT);
 });

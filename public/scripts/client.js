@@ -71,7 +71,6 @@ $(document).ready(function() {
         type: "POST",
         data: $(this).serialize(),
         success: () => {
-          console.log('working')
           loadtweets();
           $(".textarea").val("");
           $('#counter').text(140);
