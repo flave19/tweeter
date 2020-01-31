@@ -3,12 +3,8 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$(document).ready(function() {  
-  renderTweets(data);
-})
-
-
 const createTweetElement = function(tweet) {
+  const safetext = escape(tweet.content.text)
   const markup = `
   <article class="tweetblock">
     <h2 class="headerline">
@@ -18,65 +14,73 @@ const createTweetElement = function(tweet) {
       </div>
       ${tweet.user.handle}
     </h2>
-    <p class="content"> ${tweet.content.text}</p>
-    <footer>${new Date(tweet.created_at)}</footer>
+    <p class="content"> ${safetext}</p>
+    <footer>${moment(tweet.created_at).fromNow()}</footer>
   </article>
-`
-return markup;
-}
+`;
+  return markup;
+};
+
+const escape =  function(str) { // turns any malicious scripts into string literals
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+} 
+
+const renderTweets = function(tweets) {
+  for (const tweet of tweets) {
+    $(".tweetSection").prepend(createTweetElement(tweet));
+  }
+};
+
+$(document).ready(function() {
+  $(".compose").click(function() {
+    $(".new-tweet").slideToggle("slow",)
+  });
+
+  $(".textarea").click(function(event) {
+      $(".errorBox").css('display', 'none')
+    });
+
+  $(".sendTweet").submit(function(event) {
+    event.preventDefault();
+    const $tweetInput = $(this).serialize().slice(5)
+// make css class called show : "display block"
+// make css for letter red Display none
+    if(!$tweetInput){
+      $('.errorBox').css('display', 'block')
+    }
+    else if($tweetInput.length > 140){
+      // $(".counter").css('color', 'red')
+      alert("toobig")
+    }
+    else{
+      $('.errorBox').css('display', 'none')
+    $.ajax({
+      url: `/tweets`,
+      type: "POST",
+      data: $(this).serialize(),
+      dataType: JSON,
+      success: loadtweets(),
+    })}
+    $(".textarea").val("");
+    $('#counter').text(140);
+
+  });
+
+
+});
+// $(document).ready(function() {
   
-// const $tweet = $("<article>").addClass("tweet");
-
-// const tweetData = {
-//   "user": {
-//     "name": "Newton",
-//     "avatars": "https://i.imgur.com/73hZDYK.png",
-//       "handle": "@SirIsaac"
-//     },
-//   "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//   "created_at": 1461116232227
 // }
-
-// $(document).ready(function() {  
-// const $tweet = createTweetElement(tweetData);
-
-// console.log($tweet); // to see what it looks like
-// $('.container').append($tweet);
-// })
-
-
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-
-const renderTweets = function(tweets){
-
-  for(const tweet of tweets){
-    $('.tweetSection').append(createTweetElement(tweet));
-
-  }
+const loadtweets = function (){
+  $.ajax("/tweets", {
+    method: 'GET'
+  })
+  .then(response =>{
+    $(".tweetSection").empty();
+    renderTweets(response)
+  })
 }
 
+loadtweets();

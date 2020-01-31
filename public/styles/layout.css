@@ -10,12 +10,14 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
+body nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
 
 body {
-  
   font-family: 'Source Sans Pro', sans-serif;
   color: #545149;
   background-color:none;
@@ -31,19 +33,32 @@ body {
 }
 
 article:hover{
-  box-shadow: 5px 5px darkgray;
+  box-shadow: 5px 5px #F4B400;
 }
 
 article{
 
-  border: 3px solid black;
+  border: 3px inset black;
 }
 
 form{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+form button{
+  font-family: Bungee;
+}
+
+.errorBox{
+  display: none;
+  color: red;
+}
+
+.compose:hover{
+  box-shadow: 5px 5px 3px #F4B400;
 }
 
 .Avatar{
@@ -58,8 +73,6 @@ form{
   margin:auto 0;
 }
 
-
-
 .headerline{
   display: flex;
   align-items: center;
@@ -70,11 +83,18 @@ form{
 }
 .content{
   margin-bottom: 20px;
-  border-bottom: 3px solid black;
+  border-bottom: 3px hidden black;
   font-size: 30px;
   width: 90%;
   margin:auto;
   margin-bottom: 20px;
+  overflow-wrap: break-word;
+}
+
+
+#counter{
+  font-family: Bungee;
+  color: blue;
 }
 
 footer{
@@ -87,6 +107,27 @@ footer{
   font-size: 15px;
 }
 
+textarea{
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.tweetblock{
+  margin: 10px 1px;
+}
+
+.tweetbutton{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* @media(min-width:1000px){
+  .column{
+  
+  }
+} */
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
