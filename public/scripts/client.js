@@ -56,7 +56,7 @@ $(document).ready(function() {
 
   $(".sendTweet").submit(function(event) {
     event.preventDefault();
-    const $tweetInput = $(this).serialize().slice(5)
+    const $tweetInput = $("textarea", this).val();
     
     if(!$tweetInput){
       $('.errorBox').css('display', 'block')
