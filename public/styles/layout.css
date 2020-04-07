@@ -121,6 +121,7 @@ footer{
 
 .tweetblock{
   margin: 10px 1px;
+  background-color: white;
 }
 
 .tweetbutton{
@@ -131,7 +132,7 @@ footer{
 }
 
 .desktop {
-  background-color: white;
+  background-color:skyblue;
 }
 
 .new-tweet{
